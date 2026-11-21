@@ -66,24 +66,6 @@ account-time box.
 
 ---
 
-## How it works
-
-- **Auth URL redirect** — the hard-coded `https://auth.getmadium.xyz` is replaced in
-  place with `http://127.0.0.1:8787/abcd` (same byte length).
-- **Signature checks bypassed** — two conditional jumps that would reject an unsigned
-  or forged verdict are neutralized.
-- **Expiry forced** — the expiry register is set to `4102444800000` (year 2100 in
-  milliseconds), and the `now()/cmp/jle` sequence that raises *"You have no time
-  left. Top up on the site."* is removed. Older builds that use a 32-bit seconds
-  value are still handled by the original patch.
-- **Fake auth server** — listens on `127.0.0.1:8787`, replies with `LICENSE_VALID`,
-  `issuedAt` in **milliseconds**, `expiresAt` = year 2100 in milliseconds, and the
-  `{"error": false, "message": {...}}` wrapper the sign-in flow expects.
-- **Watchdog** — hashes the binary every 5 seconds. If an update replaces it, the
-  patch is re-applied automatically (allow ~20 seconds).
-
----
-
 ## Manual commands
 
 Run these from a terminal in this folder:
@@ -123,10 +105,7 @@ An older version of the fake server was sending seconds instead of milliseconds.
 Restart the watcher with `START.bat`.
 
 **"You have no time left. Top up on the site."**
-The installed build compares expiry against a millisecond clock. Older patchers
-wrote `0x7fffffff` (a seconds value), which reads as 1970 in ms and always fails.
-Re-run `START.bat` with the updated `madium_crack.py` — it writes a full 64-bit ms
-timestamp and removes the expiry branch entirely.
+Re-run `START.bat` with the latest `madium_crack.py`, then relaunch Madium.
 
 **Sign-in screen appears again**
 Wait ~30 seconds for the watcher to finish, then relaunch. If it persists, run
