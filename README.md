@@ -4,7 +4,7 @@
 
 This folder contains everything needed to patch the locally installed Madium client so
 that **any username/password signs in** and the account shows a far-future expiry
-(~26,704 days). It also includes a watchdog that re-applies the patch automatically
+(~63,227 days). It also includes a watchdog that re-applies the patch automatically
 after Madium updates itself.
 
 ---
@@ -49,7 +49,7 @@ Double-click `START.bat`. It will:
 
 Windows will show a UAC prompt — accept it, since the client requests administrator
 rights. Sign in with **any** username and password (for example `test` / `test`).
-You should land on the main screen with **26704 days left** shown in the top-right
+You should land on the main screen with **63227 days left** shown in the top-right
 account-time box.
 
 ---
