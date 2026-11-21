@@ -13,21 +13,9 @@ after Madium updates itself.
 
 | File | Purpose |
 |---|---|
-| `madium_crack.py` | Patcher + fake local auth server + update watchdog |
+| `madium_crack.py` | Patcher + local auth server + update watchdog |
 | `START.bat` | Re-run the install (patch, register startup, start watcher) |
 | `UNINSTALL.bat` | Remove the startup entry and watcher |
-| `watch.log` | Watchdog activity log |
-| `Madium.exe.original.bak` | Spare copy of the original, unpatched binary |
-| `Madium.lnk` | Shortcut to Madium |
-| `analysis\` | Reverse-engineering scripts, disassembly dumps, screenshots, notes |
-
-The **live** backup used by the patcher is kept next to the executable at:
-
-```
-C:\Users\temel\AppData\Local\Madium\Bin\Madium.exe.original.bak
-```
-
-The copy in this folder is just a spare.
 
 ---
 
